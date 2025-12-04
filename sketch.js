@@ -103,19 +103,8 @@ function draw()
   let a = atan2(y, x);
   
   push();
-    translate(cX, cY);
-    push();
-      rotate(a);
-      noStroke();
-      fill(255);
-      translate(circle_out/2, 0);
-      ellipse(0,0,ball_size,ball_size);
-    pop();
-  pop();
-
-  push();
   // 原点を中心に移動
-  translate(pX, pY + count*0.4);
+  translate(pX, pY + count);
 
   // 回転
   rotate((int)((a+180)/30)*30+180);
@@ -126,11 +115,11 @@ function draw()
 
   if(ww < wh)
   {
-    scale(ww/img[0].width*0.8 + count*0.001);
+    scale(ww/img[0].width*0.8 + count*0.005);
   }
   else
   {
-    scale(wh/img[0].width*0.8 + count*0.001);
+    scale(wh/img[0].width*0.8 + count*0.005);
   }
   push();
   rotate(90);
@@ -177,14 +166,25 @@ function draw()
   ellipse(0,0,circle_out,circle_out);
   pop();
   
+  push();
+    translate(cX, cY);
+    push();
+      rotate(a);
+      noStroke();
+      fill(255);
+      translate(circle_out/2, 0);
+      ellipse(0,0,ball_size,ball_size);
+    pop();
+  pop();
+
+  
   fill(240);
   //文字の設定
   textAlign(CENTER);
   textSize(ww*0.07);
   //カウント表示
-  text(count, ww/2, wh*0.9);
+  text(count, cX, cY);
 
-  
 }
 
 function mousePressed() 
